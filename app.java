@@ -5,10 +5,6 @@ public class app {
         campo.criar_Campo();
         int count = 1;
         System.out.println("size: "+campo.getLixos().size());
-        /*for (Lixo l : campo.getLixos()) {
-            System.out.println("Lixo: "+count+" | X: "+l.getX()+" | Y: "+l.getY()+ " | Peso: "+l.getquantPontos());
-            count+=1;
-        }*/
         campo.atualizaCampo();
     }
 }
