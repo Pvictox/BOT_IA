@@ -52,17 +52,47 @@ public class Campo {
         }
         
         for (Lixo l : getLixos()) {
-            if (l.getquantPontos() == 10){
-                matriz[l.getX()][l.getY()] = "A";
-            }else if (l.getquantPontos() == 20){
-                matriz[l.getX()][l.getY()] = "V";
-            }
-            
+            if (l.getQuantPontos() == 10){
+                matriz[l.getX()][l.getY()] = l.getLetra();
+            }else if (l.getQuantPontos() == 20){
+                matriz[l.getX()][l.getY()] = l.getLetra();
+            }          
         }
 
         mostraCampo(matriz);
 
     }
+
+
+
+    //PROTÓTIPO
+    // public Lixo coletouLixo(){
+    //     for (Lixo l : getLixos()) {
+    //         if (l.getX() == getPosicaoAtual()[0] && l.getY() == getPosicaoAtual()[1]){
+    //             l.setLetra("*");
+    //             return l;
+    //         }
+    //     }
+    //     return null;
+    // }
+
+    
+
+
+    //  public Campo aplicaMovimento(int[] movimentoRealizado){
+    //    int[] posCasa = {0,0};
+
+    //     if (movimentoRealizado[0] == posCasa[0] && movimentoRealizado[1] == posCasa[1]){
+    //         //tá em casa
+    //         //remover ele do arraylist de lixos
+    //         getLixos().remove()
+    //     }
+
+    //  }
+     
+    
+     
+    
 
     private static void mostraCampo(String[][]matriz){
         for (int i=0; i<20; i++){
@@ -89,7 +119,7 @@ public class Campo {
                 Lixo lixoTipo1 = null;
                 int[] coordAleatoria = Coordenadas.randomCoordenada(getLinhas()-1, getColunas()-1);
                 if (coordAleatoria[0] != 0 && coordAleatoria[1] != 0){
-                    lixoTipo1 = new Lixo(coordAleatoria[0], coordAleatoria[1], 10);
+                    lixoTipo1 = new Lixo(coordAleatoria[0], coordAleatoria[1], 10, "A");
                 }
                 for (Lixo l : getLixos()) {
                     if (l.getX() == coordAleatoria[0] && l.getY() == coordAleatoria[1]){
@@ -109,7 +139,7 @@ public class Campo {
                 Lixo lixoTipo2 = null;
                 int[] coordAleatoria = Coordenadas.randomCoordenada(getLinhas()-1, getColunas()-1);
                 if (coordAleatoria[0] != 0 && coordAleatoria[1] != 0){
-                    lixoTipo2 = new Lixo(coordAleatoria[0], coordAleatoria[1], 20);
+                    lixoTipo2 = new Lixo(coordAleatoria[0], coordAleatoria[1], 20, "V");
                 }
                 for (Lixo l : getLixos()) {
                     if (l.getX() == coordAleatoria[0] && l.getY() == coordAleatoria[1]){
