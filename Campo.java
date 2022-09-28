@@ -87,7 +87,7 @@ public class Campo {
             
             for (int i=0; i<5;i++){
                 Lixo lixoTipo1 = null;
-                int[] coordAleatoria = Coordenadas.randomCoordenada(getLinhas()-10, getColunas()-1);
+                int[] coordAleatoria = Coordenadas.randomCoordenada(getLinhas()-1, getColunas()-1);
                 if (coordAleatoria[0] != 0 && coordAleatoria[1] != 0){
                     lixoTipo1 = new Lixo(coordAleatoria[0], coordAleatoria[1], 10);
                 }
