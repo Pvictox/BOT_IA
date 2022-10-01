@@ -8,6 +8,8 @@ public class Campo {
     private int linhas, colunas;
     private int[] posicaoAtual;
     private int pontos;
+    private boolean saiuDeCasa;
+
 
     public Campo(int linhas , int colunas, int[] posicaoAtual){
             this.linhas = linhas;
@@ -18,6 +20,10 @@ public class Campo {
             this.posicaoAtual[1] = 0; //Y 
             this.pontos=0;   
     }
+
+
+
+    
 
     //Mostrar no console uma matriz representando o campo
     // C = [0,0] (CASA)
@@ -51,7 +57,7 @@ public class Campo {
        var x=this.getPosicaoAtual()[1];
         for( Lixo l : this.getLixos()){
             if(l.getX() == y && l.getY() == x ){
-                this.lixos.remove(l);
+               this.lixos.remove(l);
                return l.getQuantPontos();
 
             }
@@ -143,6 +149,16 @@ public class Campo {
 
     public void setLixos(ArrayList<Lixo> lixos) {
         this.lixos = lixos;
+    }
+
+    public boolean getSaiudeCasa(){
+        return this.saiuDeCasa;
+
+    }
+    
+    public void setSaiudeCasa( boolean val){
+        this.saiuDeCasa = val;
+
     }
 
     public int getLinhas() {
