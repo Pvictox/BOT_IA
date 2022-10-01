@@ -1,8 +1,6 @@
 import java.rmi.ConnectIOException;
 import java.util.ArrayList;
 
-import javax.swing.plaf.basic.BasicTreeUI.TreeCancelEditingAction;
-import javax.swing.text.html.StyleSheet.BoxPainter;
 
 public class Bots {
     private int [] movimento;
@@ -89,6 +87,51 @@ public class Bots {
        
     }
    
+
+    public int[] agenteDeUtilidade(Campo campo, int[] memoriaMaisRecente){
+        
+        x=campo.getPosicaoAtual()[0];
+        y=campo.getPosicaoAtual()[1];
+        
+        ArrayList<int[]> posLixos = new ArrayList<>();
+        int[] pos = new int[2];
+        for (Lixo l : campo.getLixos()) { 
+            pos[0] = l.getX();
+            pos[1] = l.getY();
+            posLixos.add(pos);
+        }
+
+
+        if(pontos>0){
+            if(y>0){
+                campo.movLeft(); return memoriaMaisRecente;
+            }else if(x>0){
+                campo.movTop(); return memoriaMaisRecente;
+            }
+        }
+
+        int aux=campo.checkLixo();
+        if(aux !=0) pontos=aux;
+        if(x==0 && y==0){
+            campo.setPontos(pontos+campo.getPontos());
+            this.pontos=0;
+        }
+      
+        int[] botDist = new int[2];
+        botDist[0] = x;
+        botDist[1] = y;
+
+
+        int[] menorDistancia = Coordenadas.menorDistancia(botDist, posLixos, campo.getLixos());
+
+
+            if (x < menorDistancia[0]){campo.movDown(); return menorDistancia;}
+            if (x > menorDistancia[0]){campo.movTop(); return menorDistancia;}
+            if (y < menorDistancia[1]){campo.movRight(); return menorDistancia;}
+            if (y > menorDistancia[1]){campo.movLeft(); return menorDistancia;}
+
+            return menorDistancia;
+    }
    
 
     public int[] getMovimento() {

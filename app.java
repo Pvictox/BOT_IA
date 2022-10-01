@@ -11,7 +11,7 @@ public class app {
         System.out.println("size: "+campo.getLixos().size());
         campo.atualizaCampo();
         int[] memoria = {0,0};
-        int miliseconds = 0050;
+        int miliseconds = 3000;
         while(campo.getPontos()<150){            
 
             try{
@@ -21,8 +21,8 @@ public class app {
             }
             
             //b.agenteSimples(campo);
-            memoria = b.agenteSimplesModelo(campo, memoria);
-            
+            //memoria = b.agenteSimplesModelo(campo, memoria);
+            memoria = b.agenteDeUtilidade(campo, memoria);
             System.out.println("\n\n\n\n\n\n\n");
             campo.atualizaCampo();
             System.out.println("Pontors: "+campo.getPontos());
@@ -30,7 +30,7 @@ public class app {
             System.out.println("Memoria do lixo mais recente: \n"+ "X: " +memoria[0] + "| Y :"+memoria[1]);
             System.out.println("Saiu de casa: "+campo.getSaiudeCasa());
             if (memoria[0] != 0){
-                miliseconds = 1000;
+                miliseconds = 3000;
             }
         }
       
