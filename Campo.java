@@ -7,7 +7,7 @@ public class Campo {
     private ArrayList<Lixo> lixos; 
     private int linhas, colunas;
     private int[] posicaoAtual;
-    
+    private int pontos;
 
     public Campo(int linhas , int colunas, int[] posicaoAtual){
             this.linhas = linhas;
@@ -15,25 +15,9 @@ public class Campo {
             this.lixos = new ArrayList<Lixo>();
             this.posicaoAtual = new int[2];   
             this.posicaoAtual[0] = 0; //X
-            this.posicaoAtual[1] = 0; //Y    
+            this.posicaoAtual[1] = 0; //Y 
+            this.pontos=0;   
     }
-
-    public int getColunas() {
-        return colunas;
-    }
-
-    public int getLinhas() {
-        return linhas;
-    }
-    
-    public ArrayList<Lixo> getLixos() {
-        return lixos;
-    }
-
-    public int[] getPosicaoAtual() {
-        return posicaoAtual;
-    }
-
 
     //Mostrar no console uma matriz representando o campo
     // C = [0,0] (CASA)
@@ -62,37 +46,32 @@ public class Campo {
         mostraCampo(matriz);
 
     }
+    public int checkLixo(){
+       var y=this.getPosicaoAtual()[0];
+       var x=this.getPosicaoAtual()[1];
+        for( Lixo l : this.getLixos()){
+            if(l.getX() == y && l.getY() == x ){
+                this.lixos.remove(l);
+               return l.getQuantPontos();
 
+            }
+        }
+       return 0; 
+    }
 
-
-    //PROTÓTIPO
-    // public Lixo coletouLixo(){
-    //     for (Lixo l : getLixos()) {
-    //         if (l.getX() == getPosicaoAtual()[0] && l.getY() == getPosicaoAtual()[1]){
-    //             l.setLetra("*");
-    //             return l;
-    //         }
-    //     }
-    //     return null;
-    // }
-
-    
-
-
-    //  public Campo aplicaMovimento(int[] movimentoRealizado){
-    //    int[] posCasa = {0,0};
-
-    //     if (movimentoRealizado[0] == posCasa[0] && movimentoRealizado[1] == posCasa[1]){
-    //         //tá em casa
-    //         //remover ele do arraylist de lixos
-    //         getLixos().remove()
-    //     }
-
-    //  }
      
-    
-     
-    
+    public void movRight(){
+        this.posicaoAtual[1]++;
+    }
+    public void movLeft(){
+        this.posicaoAtual[1]--;
+    }
+    public void movTop(){
+        this.posicaoAtual[0]--;
+    }
+    public void movDown(){
+        this.posicaoAtual[0]++;
+    }
 
     private static void mostraCampo(String[][]matriz){
         for (int i=0; i<20; i++){
@@ -155,6 +134,48 @@ public class Campo {
             }
         }
 
-        
+       
     }
+
+    public ArrayList<Lixo> getLixos() {
+        return lixos;
+    }
+
+    public void setLixos(ArrayList<Lixo> lixos) {
+        this.lixos = lixos;
+    }
+
+    public int getLinhas() {
+        return linhas;
+    }
+
+    public void setLinhas(int linhas) {
+        this.linhas = linhas;
+    }
+
+    public int getColunas() {
+        return colunas;
+    }
+
+    public void setColunas(int colunas) {
+        this.colunas = colunas;
+    }
+
+    public int[] getPosicaoAtual() {
+        return posicaoAtual;
+    }
+
+    public void setPosicaoAtual(int[] posicaoAtual) {
+        this.posicaoAtual = posicaoAtual;
+    }
+
+    public int getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(int pontos) {
+        this.pontos = pontos;
+    }
+    
+    
 }
