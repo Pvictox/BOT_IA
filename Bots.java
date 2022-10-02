@@ -1,5 +1,7 @@
 import java.rmi.ConnectIOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Bots {
@@ -86,6 +88,67 @@ public class Bots {
         return memoriaMaisRecente;
        
     }
+
+
+
+    public int[] agenteDeObjetivo(Campo campo, int[] memoriaMaisRecente){
+        x=campo.getPosicaoAtual()[0];
+        y=campo.getPosicaoAtual()[1];
+        int esquerdaParede = 0;
+        int direitaParede = campo.getColunas() - 1;
+
+        if(pontos>0){
+            if(y>0){
+                campo.movLeft(); return memoriaMaisRecente;
+            }else if(x>0){
+                campo.movTop(); return memoriaMaisRecente;
+            }
+        }
+
+        if (x == 0 && y==1 && this.pontos == 0){
+            campo.setSaiudeCasa(true);
+        }
+
+        int aux=campo.checkLixo();
+        if(aux !=0){
+            
+            pontos=aux;
+            memoriaMaisRecente[0] = x;
+            memoriaMaisRecente[1] = y;  
+            
+        } 
+        if(x==0 && y==0){
+            campo.setPontos(pontos+campo.getPontos());
+            this.pontos=0;
+        }
+        
+        if (campo.getSaiudeCasa()){
+            if (y < memoriaMaisRecente[1]){
+                campo.movRight(); return memoriaMaisRecente;
+            }else if (x < memoriaMaisRecente[0]){
+                campo.movDown(); return memoriaMaisRecente;
+            }else if (x == memoriaMaisRecente[0] && y == memoriaMaisRecente[1]){
+                campo.setSaiudeCasa(false);
+            }
+        }
+
+        int[] nextPosition = new int[2];
+        nextPosition[0] = campo.getLixos().get(campo.getCont()).getX();
+        nextPosition[1] = campo.getLixos().get(campo.getCont()).getY();
+        memoriaMaisRecente = nextPosition;
+        campo.setCont(campo.getCont()+1);
+        
+        if( y==19 && x%2==0){campo.movDown(); return memoriaMaisRecente;}
+        if (y==0 && x%2==1) {campo.movDown(); return memoriaMaisRecente;}
+        if(x%2==0 ) {campo.movRight(); return memoriaMaisRecente;}
+        if(x%2==1){ campo.movLeft(); return memoriaMaisRecente; }
+
+        return memoriaMaisRecente;
+       
+    }
+
+
+
    
 
     public int[] agenteDeUtilidade(Campo campo, int[] memoriaMaisRecente){
@@ -93,14 +156,15 @@ public class Bots {
         x=campo.getPosicaoAtual()[0];
         y=campo.getPosicaoAtual()[1];
         
-        ArrayList<int[]> posLixos = new ArrayList<>();
-        int[] pos = new int[2];
-        for (Lixo l : campo.getLixos()) { 
-            pos[0] = l.getX();
+         ArrayList<int[]> posLixos = new ArrayList<>();
+         int[] pos = new int[2];
+         for (Lixo l : campo.getLixos()) { 
+             pos[0] = l.getX();
             pos[1] = l.getY();
             posLixos.add(pos);
         }
 
+        
 
         if(pontos>0){
             if(y>0){
@@ -121,8 +185,14 @@ public class Bots {
         botDist[0] = x;
         botDist[1] = y;
 
+        int[] menorDistancia; 
+        if (Coordenadas.menorDistancia(botDist, posLixos, campo.getLixos()) != null){
+             menorDistancia = Coordenadas.menorDistancia(botDist, posLixos, campo.getLixos());
+        }else{
+             menorDistancia = memoriaMaisRecente;
+        }
 
-        int[] menorDistancia = Coordenadas.menorDistancia(botDist, posLixos, campo.getLixos());
+        
 
 
             if (x < menorDistancia[0]){campo.movDown(); return menorDistancia;}

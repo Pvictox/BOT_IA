@@ -9,6 +9,7 @@ public class Campo {
     private int[] posicaoAtual;
     private int pontos;
     private boolean saiuDeCasa;
+    private int cont;
 
 
     public Campo(int linhas , int colunas, int[] posicaoAtual){
@@ -19,11 +20,18 @@ public class Campo {
             this.posicaoAtual[0] = 0; //X
             this.posicaoAtual[1] = 0; //Y 
             this.pontos=0;   
+            this.cont = 0;
     }
 
 
 
-    
+    public void setCont(int cont) {
+        this.cont = cont;
+    }
+
+    public int getCont() {
+        return cont;
+    }
 
     //Mostrar no console uma matriz representando o campo
     // C = [0,0] (CASA)

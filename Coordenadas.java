@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Coordenadas {
     
@@ -18,26 +20,30 @@ public class Coordenadas {
         return (int)Math.floor(Math.random()*(intervaloMax-intervaloMin)) + intervaloMin;
     }
 
-    
+   
+
+
     public static int[] menorDistancia(int[] posBot, ArrayList<int[]> posLixo, ArrayList<Lixo> lixos) {
         int menorDist;
         int novaDist;
-        int[] valorRetor = null;
+        int[] valorRetor = new int[2];
+        int auxMenor = 0;
+        int[] posAtualLixo = new int[2];
+    
         for (Lixo l : lixos) {
-            int[] posAtualLixo = new int[2];
             posAtualLixo[0] = l.getX();
-            posAtualLixo[1] = l.getY();
-            menorDist = (int)getDistanciaPontos(posBot, posAtualLixo );
+             posAtualLixo[1] = l.getY();
+             menorDist = (int)getDistanciaPontos(posBot, posAtualLixo );
             novaDist = (int)getDistanciaPontos(posBot, posLixo.get(lixos.indexOf(l)));
-            if (menorDist > novaDist){
+           if (menorDist > novaDist){
                 valorRetor = posAtualLixo;
-            }else{
-                valorRetor = posLixo.get(lixos.indexOf(l));
+             }else{
+                 valorRetor = posLixo.get(lixos.indexOf(l));
                 
-            }
-        }
-        return valorRetor;
-    }
+             }
+          }
+         return valorRetor;
+  }
 
     public static double getDistanciaPontos(int[]p1, int[]p2){
         return Math.sqrt( Math.pow((p1[0] - p2[0]),2) + Math.pow((p1[1]-p2[1]), 2) );
