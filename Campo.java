@@ -46,7 +46,9 @@ public class Campo {
             matriz[0][0] = "B";    
         }else{
             matriz[0][0] = "C";
-            matriz[getPosicaoAtual()[0]][getPosicaoAtual()[1]] = "B";
+            if (getPosicaoAtual()[0] != 20 && getPosicaoAtual()[1] != 20){
+                matriz[getPosicaoAtual()[0]][getPosicaoAtual()[1]] = "B";
+            }
         }
         
         for (Lixo l : getLixos()) {

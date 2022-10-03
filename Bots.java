@@ -117,6 +117,7 @@ public class Bots {
             memoriaMaisRecente[1] = y;  
             
         } 
+
         if(x==0 && y==0){
             campo.setPontos(pontos+campo.getPontos());
             this.pontos=0;
@@ -132,11 +133,14 @@ public class Bots {
             }
         }
 
+       
         int[] nextPosition = new int[2];
-        nextPosition[0] = campo.getLixos().get(campo.getCont()).getX();
-        nextPosition[1] = campo.getLixos().get(campo.getCont()).getY();
+        if (campo.getLixos().size() != 0){
+            nextPosition[0] = campo.getLixos().get(campo.getLixos().size()-1).getX();
+            nextPosition[1] = campo.getLixos().get(campo.getLixos().size()-1).getY();
+        }
+        
         memoriaMaisRecente = nextPosition;
-        campo.setCont(campo.getCont()+1);
         
         if( y==19 && x%2==0){campo.movDown(); return memoriaMaisRecente;}
         if (y==0 && x%2==1) {campo.movDown(); return memoriaMaisRecente;}
