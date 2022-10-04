@@ -6,3 +6,5 @@
 
 4 - Pegou o lixo na posição [x,y], para voltar para casa [0,0] ele vai todo para a esquerda ( até chegar em Y=0), chegou ele sobe até X = 0.
 
+reativo simples:Esse foi o tempo de execução:3251ms
+

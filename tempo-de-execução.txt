@@ -1,0 +1,48 @@
+UFMA-Universade Federal do Maranhão
+Alunos: Pedro Vitor e Walderney Oliveira
+Medições dos tempos de execução de cada bot
+O posicionamento do lixo no campo e gerado de forma aleatoria 
+A ferramenta utilizada para medir o tempo foi uma API do java (System.currentTimeMillis())
+
+Processador: Intel(R) Corei5-8265U CPU @ 1.60GHz
+Memoria (RAM): 8GB 498.7Mhz DDR4
+
+
+Agente reativo simples
+
+1° teste:58,46ms
+2° teste:63,70ms
+3° teste:70,70ms
+4° teste:68,20ms
+5° teste:69,31ms
+
+media:66,074 ms
+
+Agente reativo com modelos
+
+1° teste:15,04ms
+2° teste:20,63ms
+3° teste:23,52ms
+4° teste:21,11ms
+5° teste:17,30ms
+
+
+media:19,52 ms
+
+Agente com objetivos
+1° teste:8,7ms
+2° teste:8,2ms
+3° teste:10,1ms
+4° teste:8,0ms
+5° teste:8,2ms
+
+media:8,62 ms
+
+Agente com utilidades
+1° teste:8,2ms
+2° teste:9,0ms
+3° teste:7,7ms
+4° teste:7,2ms
+5° teste:7,1ms
+
+media:7,84 ms

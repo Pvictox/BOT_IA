@@ -59,7 +59,7 @@ public class Campo {
             }          
         }
 
-        mostraCampo(matriz);
+       mostraCampo(matriz);
 
     }
     public int checkLixo(){

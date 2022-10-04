@@ -17,7 +17,7 @@ public class app {
         int count = 1;
         //System.out.println("size: " + campo.getLixos().size());
         int[] memoria = { 0, 0 };
-        int miliseconds = 0001;
+        int miliseconds = 0300;
         int opcao = 0;
 
         do {
@@ -31,8 +31,8 @@ public class app {
             opcao = teclado.nextInt();
             switch (opcao) {
                 case 1:
-
-                    while (campo.getPontos() < 151) {
+                //long tempoInicial = System.currentTimeMillis();
+                    while (campo.getPontos() < 150) {
 
                         try {
                             Thread.sleep(miliseconds);
@@ -40,26 +40,29 @@ public class app {
                             Thread.currentThread().interrupt();
                         }
                         System.out.println("\n\n\n\n\n\n\n");
-                        campo.atualizaCampo();
+                         campo.atualizaCampo();
                         System.out.println(campo.getLixos().size());
                         System.out.println(
-                                "Memoria do lixo mais recente: \n" + "X: " + memoria[0] + "| Y :" + memoria[1]);
+                               "Memoria do lixo mais recente: \n" + "X: " + memoria[0] + "| Y :" + memoria[1]);
                         System.out.println("Saiu de casa: " + campo.getSaiudeCasa());
                         b.agenteSimples(campo);
                     }
-                    System.out.println("PONTUAÇÃO FINAL DO BOT: " + campo.getPontos());
-                    campo = null;
-                    System.out.println("******* CAMPO A SER USADO *******");
-                    campo = new Campo(20, 20, posInicial);
-                    campo.criar_Campo();
-                    campo.atualizaCampo();
-                    System.out.println("******* CAMPO A SER USADO *******");
+                System.out.println("PONTUAÇÃO FINAL DO BOT: " + campo.getPontos());
+                campo = null;
+                System.out.println("******* CAMPO A SER USADO *******");
+                campo = new Campo(20, 20, posInicial);
+                campo.criar_Campo();
+                campo.atualizaCampo();
+                System.out.println("******* CAMPO A SER USADO *******");
+                //     long FINAL = System.currentTimeMillis();
+                //     System.out.println("Esse foi o tempo de execução:" + (FINAL - tempoInicial + "ms"));
+
                 break;
 
                 case 2:
-
-                    while (campo.getPontos() < 151) {
-
+                //long tempoInicial = System.currentTimeMillis();
+                    while (campo.getPontos() < 150) {
+                        
                         try {
                             Thread.sleep(miliseconds);
                         } catch (InterruptedException ex) {
@@ -83,10 +86,12 @@ public class app {
                     if (memoria[0] != 0) {
                         miliseconds = 0500;
                     }
-                    
+                    // long FINAL = System.currentTimeMillis();
+                    // System.out.println("Esse foi o tempo de execução:" + (FINAL - tempoInicial + "ms"));
                 break;
 
                 case 3:
+                //long tempoInicial = System.currentTimeMillis();
                     while (campo.getPontos() < 150) {
 
                         try {
@@ -112,10 +117,12 @@ public class app {
                         if (memoria[0] != 0) {
                             miliseconds = 0500;
                         }
-                    
+                        // long FINAL = System.currentTimeMillis();
+                        // System.out.println("Esse foi o tempo de execução:" + (FINAL - tempoInicial + "ms"));
                 break; 
                 case 4:
-                    while (campo.getPontos() < 151) {
+                // long tempoInicial = System.currentTimeMillis();
+                    while (campo.getPontos() < 150) {
 
                         try {
                             Thread.sleep(miliseconds);
@@ -139,7 +146,8 @@ public class app {
                         if (memoria[0] != 0) {
                             miliseconds = 0500;
                         }
-                 
+                        //  long FINAL = System.currentTimeMillis();
+                        // System.out.println("Esse foi o tempo de execução:" + (FINAL - tempoInicial + "ms"));
                 break;
                 case 0 :
 					System.out.println("Volte sempre!");
